@@ -1,0 +1,96 @@
+﻿<Window x:Class="WpfAppJobTracking.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppJobTracking"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border Margin="2" BorderBrush="Black" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="作業員リスト" VerticalAlignment="Center" FontSize="20" Margin="1"/>
+                    <ListView Name="lvWorkers" Grid.Row="1" Margin="2"  SelectionChanged="lvWorkers_SelectionChanged"/>
+                </Grid>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Margin="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button Name="buttonReflesh" Grid.ColumnSpan="2" Content="Reflesh" Margin="2" FontSize="20" Click="buttonReflesh_Click" IsEnabled="False"/>
+                    <TextBlock Text="Device Id" Grid.Row="1" Grid.Column="0" Margin="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
+                    <TextBlock Name="tbDeviceId" Grid.Row="1" Grid.Column="1" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="20"/>
+                    <TextBlock Text="緯度" Grid.Row="2" Grid.Column="0" Margin="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
+                    <TextBlock Name="tbLatitude" Grid.Row="2" Grid.Column="1" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="20"/>
+                    <TextBlock Text="経度" Grid.Row="3" Grid.Column="0" Margin="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
+                    <TextBlock Name="tbLogitude" Visibility="Hidden" Grid.Row="3" Grid.Column="1" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="20"/>
+                    <TextBlock Text="装着" Grid.Row="4" Grid.Column="0" Margin="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
+                    <TextBlock Name="tbMount" Grid.Row="4" Grid.Column="1" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="20"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="2">
+            <Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="buttonCreateJob" Content="Create Job" Margin="2" FontSize="20" Click="buttonCreateJob_Click" IsEnabled="False"/>
+                    <Button Name="buttonRefreshJob" Content="Reflesh" Margin="2" Grid.Column="2" FontSize="20" IsEnabled="False" Click="buttonRefreshJob_Click" />
+                </Grid>
+                <TextBlock Text="jobid" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2" FontSize="20"/>
+                <TextBlock Name="tbJobId" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="2" FontSize="20"/>
+                <TextBlock Text="Title" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2" FontSize="20"/>
+                <TextBox Name="tbTitle" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="2" FontSize="20"/>
+                <TextBlock Text="Target" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2" FontSize="20"/>
+                <TextBox Name="tbTarget" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="2" FontSize="20"/>
+                <TextBlock Text="Location" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2" FontSize="20"/>
+                <TextBox Name="tbLocation" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="2" FontSize="20"/>
+                <Button Name="buttonSendCommand" Grid.Row="7" FontSize="20" Content="Send Order" Click="buttonSendCommand_Click" Margin="2"/>
+                <TextBox Name="tbOrder" Grid.Row="7" Grid.Column="1" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2"/>
+                <TextBlock Text="Job Status" FontSize="20" Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2"/>
+                <TextBlock Name="tbJobStatus" FontSize="20" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="2"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
