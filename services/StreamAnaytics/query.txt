@@ -1,0 +1,35 @@
+WITH GetUserProps AS (
+--    SELECT *, GetMetadataPropertyValue(dynaedge, 'app') as apptype, GetMetadataPropertyValue(dynaedge,'message_type') as msgtype
+--    FROM dynaedge WHERE apptype = 'dynaedge'
+    SELECT *, GetMetadataPropertyValue(dynaedge,'[User]') as userprop
+    FROM dynaedge
+--     WHERE [userpop].[app] = 'dynaedge'
+), DynaedgeApp AS (
+    SELECT * , [userprop].[message_type] as msgtype
+    FROM GetUserProps
+    WHERE [userprop].[app] = 'dynaedge'
+)
+
+-- store location data
+SELECT
+    *
+INTO locationstore
+FROM DynaedgeApp
+WHERE msgtype = 'location'
+
+-- store sensing data
+SELECT *
+INTO sensingstore
+From DynaedgeApp WHERE msgtype = 'sensor'
+
+-- share target command notification
+SELECT d.target as jobtarget, d.jobid as jobid, d.timestamp as timestamp, js.registediotdevice as iotdevice, js.command as devicecommand, js.argument as devicecommandarg
+INTO target
+From DynaedgeApp as d
+JOIN jobsupport as js
+ON d.target = js.target
+WHERE d.msgtype = 'target'
+
+-- share job and location notification
+SELECT * INTO jobandlocationnotify
+From DynaedgeApp WHERE msgtype = 'job' OR msgtype = 'location'
