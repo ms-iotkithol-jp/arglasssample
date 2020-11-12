@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<- storage account connection string ->",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "trigger_STORAGE": "<- trigger blob storage connection string ->"
+  },
+  "ConnectionStrings": {
+    "ComputerVisionKey": "<- Computer Vision Key ->",
+    "ComputerVisionEndpoint": "<- Computer Vision Endpoint ->",
+    "IoTHubConnectionString": "<- IoT Hub serice connection string ->"
+  }
+}
